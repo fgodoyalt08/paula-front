@@ -1,0 +1,49 @@
+.responsive-img{
+    width: 100%;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+ul input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+}
+
+.head-filter{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+button{
+    padding: 5px 30px;
+    border-radius: 5px;
+}
+
+.p-0{
+    padding: 0;
+}
+.m-0{
+    margin: 0;
+}
+.mr-15{
+    margin-right: 10px;
+}
+.mb-15{
+    margin-bottom: 15px;
+}
+.mb-10{
+    margin-bottom: 10px;
+}
+.mb-15-important{
+    margin-bottom: 15px !important;
+}
+.p-10{
+    padding: 10px;
+}
+.p-15{
+    padding: 15px;
+}

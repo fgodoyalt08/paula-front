@@ -1,0 +1,59 @@
+<div class="container m-4 mb-2 animated fadeIn ">
+    <div class="text-center col-9">
+        <p><small>
+          Para pedidos mayores a 12 <br> unidades, el envio es gratis
+      </small>
+        </p>
+    </div>
+    <h3>Detalle del pedido</h3>
+    <form [formGroup]="formElimLinea" (ngSubmit)="eliminarLineas()">
+        <div class="row border-bottom pb-2" *ngFor="let categoria of categorias">
+            <div class="col-3">
+                <h6>
+                    {{categoria.categoria|uppercase}}
+                </h6>
+                <img src="/assets/img/{{categoria.categoria}}.png" class="img-cat" alt="" style="width: 60%">
+            </div>
+
+            <table class="table  table-hover col-9 text-center">
+                <thead>
+                    <tr>
+                        <th scope="col"><i class="fa fa-trash" aria-hidden="true"></i></th>
+                        <th scope="col">Referencia</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio Un.</th>
+                        <th scope="col">Sub-Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let pedido of categoria.pedidos">
+                        <th><input type="checkbox" value="{{pedido.codigo}}" (change)="cargarLinea($event,pedido.codigo)"></th>
+                        <th scope="row">{{pedido.codigo}}</th>
+                        <td>{{pedido.cantidad}}</td>
+                        <td class="text-right">{{pedido.costoU| currency: 'USD':true:'1.2-2'}}</td>
+                        <td class="text-right">{{ (pedido.cantidad * pedido.costoU)| currency: 'USD':true:'1.2-2'}}</td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th scope="col">Total</th>
+                        <th class="text-right">{{calcuarTotal(categoria.pedidos)| currency: 'USD':true:'1.2-2'}}</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+        </div>
+        <div class="alignCentro">
+            <button type="button" class="btn-violeta">Pagar</button>
+            <button class="btn btn-outline-primary" type="submit">Eliminar</button>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,32 @@
+input[type="text"],
+.form-control {
+    width: 50%!important;
+}
+
+input[type="number"] {
+    width: 30%!important;
+    margin-left: 1%;
+    display: inline-block
+}
+
+.linea {
+    margin-left: 1%;
+    margin-right: 1%
+}
+
+.btn-add {
+    border-radius: 20px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-transform: none;
+    color: #8A2BE2!important;
+    border-color: #8A2BE2!important;
+    background-color: white;
+    padding-left: 25%!important;
+    padding-right: 25%!important;
+    width: 45px;
+}
+
+.border-bottom {
+    border-color: #8A2BE2!important
+}

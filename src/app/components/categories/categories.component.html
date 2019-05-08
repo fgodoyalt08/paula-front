@@ -1,0 +1,76 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <button class="btn btn-violeta" data-toggle="modal" data-target="#exampleModal">Agregar <i
+            class="material-icons">add</i></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Categorías</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>Nombre</th>
+                  <th>Padre</th>
+                  <th>Acciones</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let number of numbers">
+                    <td>Children 1</td>
+                    <td>Category</td>
+                    <td>
+                      <a href="#"><i class="material-icons">edit</i></a>
+                      <a [routerLink]="" (click)="[showDelete()]"><i class="material-icons">delete</i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar categoría</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form action="#">
+          <div class="row" [formGroup]="formLogin">
+                    <div class="mb-20 col-md-6">
+                        <input type="text" id="user" formControlName="email" required class="form-control " placeholder="Nombre">
+                    </div>
+                    <div class="mb-20 col-md-6">
+                        <select class="form-control" formControlName="tipoDoc">
+                            <option disabled>Padre</option>
+                            <option>Joyería</option>
+                          </select>
+                    </div>
+                </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar <i
+            class="material-icons">cancel</i></button>
+        <button type="button" class="btn btn-violeta">Guardar <i class="material-icons">check</i></button>
+      </div>
+    </div>
+  </div>
+</div>

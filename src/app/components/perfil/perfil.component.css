@@ -1,0 +1,18 @@
+p {
+    margin: 0px;
+}
+
+.row {
+    margin-bottom: 1%;
+    margin-left: 5%;
+    align-items: center;
+}
+
+.box {
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%
+}

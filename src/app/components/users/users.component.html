@@ -1,0 +1,410 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <!--div class="row">
+      <div class="col-12">
+        <button class="btn btn-violeta" data-toggle="modal" data-target="#exampleModal">Nuevo <i
+            class="material-icons">add</i></button>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Usuarios Registrados</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Teléfono</th>
+                  <th>Móvil</th>
+                  <th>Dirección</th>
+                  <th>Fecha de cumpleaños</th>
+                  <th>Categoría</th>
+                  <th>Acciones</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let number of numbers">
+                    <td>Juan Perez</td>
+                    <td>juanperez@mail.com</td>
+                    <td>7890123</td>
+                    <td></td>
+                    <td>Las delicias 777</td>
+                    <td>08/08/1993</td>
+                    <td>Cosméticos</td>
+                    <td>
+                      <a href="#"><i class="material-icons">edit</i></a>
+                      <a [routerLink]="" (click)="[showDelete()]"><i class="material-icons">delete</i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Paciente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs bg-primary" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="basic"
+              aria-selected="true">Datos básicos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general"
+              aria-selected="false">Información general</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contract-tab" data-toggle="tab" href="#contract" role="tab" aria-controls="contract"
+              aria-selected="false">Contrato</a>
+          </li>
+        </ul>
+
+        <form action="#">
+          <div class="tab-content pt-4" id="myTabContent">
+
+            <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+              <div class="row pb-4">
+                <div class="col">
+                  <label for="id-type">Tipo Identificación <b class="required"></b></label>
+                  <select name="id-type" id="id-type" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Cédula Ciudadana</option>
+                    <option value="2">Pasaporte</option>
+                    <option value="1">Licencia de Conducción</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="id-number">Número Identificación <b class="required"></b></label>
+                  <input type="text" class="form-control" name="id-number" id="id-number" placeholder="Identificación">
+                </div>
+                <div class="col">
+                  <label for="birthdate">Fecha Nacimiento <b class="required"></b></label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="birthdate" id="birthdate"
+                      aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><i
+                          class="material-icons">calendar_today</i></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <label for="gender">Género <b class="required"></b></label>
+                  <input type="text" class="form-control" name="gender" id="gender" placeholder="Masculino / Femenino">
+                </div>
+              </div>
+
+              <div class="row pb-4">
+                <div class="col">
+                  <label for="firstname">Primer nombre <b class="required"></b></label>
+                  <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Nombre">
+                </div>
+                <div class="col">
+                  <label for="secondname">Segundo nombre</label>
+                  <input type="text" class="form-control" name="secondname" id="secondname" placeholder="Nombre">
+                </div>
+                <div class="col">
+                  <label for="surname">Primer apellido <b class="required"></b></label>
+                  <input type="text" class="form-control" name="surname" id="surname" placeholder="Apellido">
+                </div>
+                <div class="col">
+                  <label for="secondsurname">Segundo apellido</label>
+                  <input type="text" class="form-control" name="secondsurname" id="secondsurname"
+                    placeholder="Apellido">
+                </div>
+              </div>
+
+              <div class="row pb-4">
+                <div class="col">
+                  <label for="department">Departamento residencia</label>
+                  <select name="department" id="department" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="town">Municipio residencia</label>
+                  <select name="town" id="town" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="address">Dirección</label>
+                  <input type="text" class="form-control" name="address" id="address">
+                </div>
+                <div class="col">
+                  <label for="zone">Zona</label>
+                  <select name="zone" id="zone" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <label for="district">Barrio</label>
+                  <input type="text" class="form-control" name="district" id="district">
+                </div>
+                <div class="col">
+                  <label for="phone">Teléfono</label>
+                  <input type="text" class="form-control" name="phone" id="phone">
+                </div>
+                <div class="col">
+                  <label for="mobile">Celular</label>
+                  <input type="text" class="form-control" name="mobile" id="mobile">
+                </div>
+                <div class="col">
+                  <label for="email">Correo Electrónico</label>
+                  <input type="text" class="form-control" name="email" id="email">
+                </div>
+              </div>
+
+
+            </div>
+            <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="general-tab">
+              <div class="row pb-4">
+                <div class="col">
+                  <label for="civilstatus">Estado civil</label>
+                  <select name="civilstatus" id="civilstatus" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="bloodtype">Grupo Sanguíneo</label>
+                  <select name="bloodtype" id="bloodtype" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="scholarship">Escolaridad</label>
+                  <select name="scholarship" id="scholarship" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="ethnic">Etnia</label>
+                  <select name="ethnic" id="ethnic" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row pb-3">
+                <div class="col">
+                  <label for="department">Ocupación</label>
+                  <select name="department" id="department" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="occupation">Discapacidad</label>
+                  <select name="occupation" id="occupation" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="gestation">Gestación</label>
+                  <select name="gestation" id="gestation" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="religion">Religión</label>
+                  <select name="religion" id="religion" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row pb-3 pt-4">
+                <div class="col">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="displaced">
+                    <label class="custom-control-label" for="displaced">Desplazado</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="pensioner">
+                    <label class="custom-control-label" for="pensioner">Pensionado</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="lgbti">
+                    <label class="custom-control-label" for="lgbti">Población LGBTI</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="victimabuse">
+                    <label class="custom-control-label" for="victimabuse">Víctima maltrato</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="victimarmedconflict">
+                    <label class="custom-control-label" for="victimarmedconflict">Víctima conflicto armado</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row pb-3 pt-4" style="border-top: 1px solid #e9ecef">
+                <div class="col-12">
+                  <h4>Envío de notificaciones</h4>
+                </div>
+                <div class="col-4">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="sendmail">
+                    <label class="custom-control-label" for="sendmail">Envío de correo electrónico</label>
+                  </div>
+                </div>
+                <div class="col-1">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="sendsms">
+                    <label class="custom-control-label" for="sendsms">SMS</label>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="sendcall">
+                    <label class="custom-control-label" for="sendcall">Llamada telefónica</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="contract" role="tabpanel" aria-labelledby="contract-tab">
+              <div class="row pb-4">
+                <div class="col">
+                  <label for="affiliatetype">Tipo afiliado <b class="required"></b></label>
+                  <select name="affiliatetype" id="affiliatetype" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+
+                <div class="col">
+                  <label for="affiliatedate">Fecha afiliación <b class="required"></b></label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="affiliatedate" id="affiliatedate"
+                      aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><i
+                          class="material-icons">calendar_today</i></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <label for="sisben">Número sisbén</label>
+                  <input type="text" class="form-control" name="sisben" id="sisben"
+                    placeholder="Número sisbén">
+                </div>
+
+                <div class="col">
+                  <label for="sisbendate">Fecha sisbén</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="sisbendate" id="sisbendate"
+                      aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><i
+                          class="material-icons">calendar_today</i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row pb-4">
+                <div class="col-3">
+                  <label for="regime">Régimen</label>
+                  <select name="regime" id="regime" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+
+                <div class="col-3">
+                  <label for="administrator">Administradora</label>
+                  <select name="administrator" id="administrator" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+
+                <div class="col-3">
+                  <label for="contract">Contrato</label>
+                  <select name="contract" id="contract" class="form-control">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row pl-3 pt-3">
+                  <span class="isActive"><i class="material-icons">check</i> Activo</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar <i
+            class="material-icons">cancel</i></button>
+        <button type="button" class="btn btn-violeta">Guardar <i class="material-icons">check</i></button>
+      </div>
+    </div>
+  </div>
+</div>

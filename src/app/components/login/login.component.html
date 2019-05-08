@@ -1,0 +1,28 @@
+<div class="container animated fadeIn fast">
+    <div class="row">
+        <div class="col-md-7" id="maincontainer">
+            <h1 id="openmedical"><b>P</b>aula</h1>
+        </div>
+        <div class="col-md-5 md-form">
+            <div id="loginform">
+                <input type="text" (ngModel)="user" id="user" required class="form-control " placeholder="Usuario">
+
+                <input type="password" (ngModel)="password" id="password" required class="form-control " placeholder="Contraseña">
+                <br>
+
+                <div class="center">
+                    <button (click)="login()" class="btn btn-info">Entrar</button>
+                    <a style="text-align: center; margin-left: 4%">¿Olvidaste tu contraseña?</a>
+
+                </div>
+
+                <div class="center mt-3">
+
+                    <a [routerLink]="['/signup']" style="text-align: center; color:  #8A2BE2!important">Registrarse</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

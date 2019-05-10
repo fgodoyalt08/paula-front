@@ -1,4 +1,5 @@
 <div class="main-content">
+  <toastr-notification></toastr-notification>  
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
@@ -21,9 +22,9 @@
                   <th>Acciones</th>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let number of numbers">
-                    <td>Children 1</td>
-                    <td>Category</td>
+                  <tr *ngFor="let category of categories">
+                    <td>{{category.name}}</td>
+                    <td>{{category.parent}}</td>
                     <td>
                       <a href="#"><i class="material-icons">edit</i></a>
                       <a [routerLink]="" (click)="[showDelete()]"><i class="material-icons">delete</i></a>
@@ -53,23 +54,25 @@
       <div class="modal-body">
 
         <form action="#">
-          <div class="row" [formGroup]="formLogin">
+          <div class="row" [formGroup]="formCategories">
                     <div class="mb-20 col-md-6">
-                        <input type="text" id="user" formControlName="email" required class="form-control " placeholder="Nombre">
+                      <label for="name">Nombre</label>
+                        <input type="text" formControlName="name" required class="form-control ">
                     </div>
                     <div class="mb-20 col-md-6">
-                        <select class="form-control" formControlName="tipoDoc">
-                            <option disabled>Padre</option>
-                            <option>Joyería</option>
+                      <label for="parent">(Opcional) Categoría Padre</label>
+                        <select class="form-control" formControlName="parent">
+                            <option selected></option>
+                            <option *ngFor="let category of categories">{{category.name}}</option>
                           </select>
                     </div>
                 </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar <i
+        <button type="button" class="btn btn-secondary" #dismissButton data-dismiss="modal">Regresar <i
             class="material-icons">cancel</i></button>
-        <button type="button" class="btn btn-violeta">Guardar <i class="material-icons">check</i></button>
+        <button type="button" (click)="guardarCategory(); triggerFalseClick()" class="btn btn-violeta">Guardar <i class="material-icons">check</i></button>
       </div>
     </div>
   </div>

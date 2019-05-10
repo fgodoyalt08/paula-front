@@ -1,24 +1,26 @@
 <div class="container animated fadeIn fast">
     <div class="row">
-        <div class="col-md-7" id="maincontainer">
+        <div class="col-lg-4 offset-lg-2 col-xs-12" id="maincontainer">
             <h1 id="openmedical"><b>P</b>aula</h1>
         </div>
-        <div class="col-md-5 md-form">
+        <div class="col-lg-4 offset-lg-2 col-xs-12 md-form">
             <div id="loginform">
-                <input type="text" (ngModel)="user" id="user" required class="form-control " placeholder="Usuario">
+                <input type="text" [(ngModel)]="user" #ctrl="ngModel" id="user" required class="form-control " placeholder="Usuario">
 
-                <input type="password" (ngModel)="password" id="password" required class="form-control " placeholder="Contraseña">
+                <input type="password" [(ngModel)]="password" id="password" required class="form-control " placeholder="Contraseña">
+                <input type="checkbox" [(ngModel)]="remember" id="remember" class="form-control " name="remember">  <span for="remember" class="remember">  Recordar me</span>
                 <br>
-
+                <toastr-notification></toastr-notification>  
+                <br>
                 <div class="center">
                     <button (click)="login()" class="btn btn-info">Entrar</button>
-                    <a style="text-align: center; margin-left: 4%">¿Olvidaste tu contraseña?</a>
+                    <a [routerLink]="['/olvide-contraseña']" style="text-align: center; margin-left: 4%">¿Olvidaste tu contraseña?</a>
 
                 </div>
 
                 <div class="center mt-3">
 
-                    <a [routerLink]="['/signup']" style="text-align: center; color:  #8A2BE2!important">Registrarse</a>
+                    <a [routerLink]="['/registrarse']" style="text-align: center; color:  #8A2BE2!important">Registrarse</a>
 
                 </div>
 

@@ -10,6 +10,7 @@ import { UneteComponent } from './components/unete/unete.component';
 import { RouterModule } from '@angular/router';
 import { app_routes } from './app.routes';
 import { LoginComponent } from './components/login/login.component';
+import { PasswordComponent } from './components/password/password.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ComisionComponent } from './components/comision/comision.component';
@@ -45,7 +46,7 @@ import { NotificationService} from './_services/toastr-notification.service';
     FormularioComponent,
     UneteComponent,
     LoginComponent,
-    
+    PasswordComponent,
     PerfilComponent,
     ComisionComponent,
     PedidosComponent,

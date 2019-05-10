@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, CanActivate } from '@angular/router';
 import { PerfilService } from 'src/app/services/perfil.service';
 
 
@@ -12,13 +12,12 @@ import { PerfilService } from 'src/app/services/perfil.service';
 })
 export class PerfilComponent implements OnInit {
   datos:Object;
-  
+  public user:Object;
   constructor(private actRoute: ActivatedRoute, private perfilService: PerfilService) { 
     this.getDatos()
   }
 
   ngOnInit() {
-    
   }  
 
   getDatos():any{
@@ -28,7 +27,8 @@ export class PerfilComponent implements OnInit {
     //     this.datos= this.perfilService.getPerfil(params['id'])
     //   }
     // )
-    this.datos= this.perfilService.getPerfil() //id tendra que ser tomado de la var sesion
+    this.datos = this.perfilService.getPerfil() //id tendra que ser tomado de la var sesion
+    console.warn(this.datos);
   } 
 
 }

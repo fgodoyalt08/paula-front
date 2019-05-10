@@ -32,6 +32,6 @@ export class PerfilService {
     //   'id': id      
     // });
     //return this.http.get(url, {headers})
-    return this.perfiles[0]
+    return JSON.parse(localStorage.getItem('u'))[0]
   }
 }

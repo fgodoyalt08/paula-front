@@ -14,24 +14,24 @@ export class NavbarComponent implements OnInit {
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
-
+    public profileMenu: boolean = false;
     constructor(location: Location,  private element: ElementRef, private router: Router) {
       this.location = location;
           this.sidebarVisible = false;
     }
 
     ngOnInit(){
-    //   this.listTitles = ROUTES.filter(listTitle => listTitle);
-    //   const navbar: HTMLElement = this.element.nativeElement;
-    //   this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-    //   this.router.events.subscribe((event) => {
-    //     this.sidebarClose();
-    //      var $layer: any = document.getElementsByClassName('close-layer')[0];
-    //      if ($layer) {
-    //        $layer.remove();
-    //        this.mobile_menu_visible = 0;
-    //      }
-    //  });
+      this.listTitles = ROUTES.filter(listTitle => listTitle);
+      const navbar: HTMLElement = this.element.nativeElement;
+      this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+      this.router.events.subscribe((event) => {
+        this.sidebarClose();
+         var $layer: any = document.getElementsByClassName('close-layer')[0];
+         if ($layer) {
+           $layer.remove();
+           this.mobile_menu_visible = 0;
+         }
+     });
     }
 
     sidebarOpen() {
@@ -109,18 +109,23 @@ export class NavbarComponent implements OnInit {
         }
     };
 
-    // getTitle(){
-    //   var titlee = this.location.prepareExternalUrl(this.location.path());
-    //   if(titlee.charAt(0) === '#'){
-    //       titlee = titlee.slice( 2 );
-    //   }
-    //   titlee = titlee.split('/').pop();
+    getTitle(){
 
-    //   for(var item = 0; item < this.listTitles.length; item++){
-    //       if(this.listTitles[item].path === titlee){
-    //           return this.listTitles[item].title;
-    //       }
-    //   }
-    //   return 'Dashboard';
-    // }
+      var titlee = this.location.prepareExternalUrl(this.location.path());
+      if(titlee.charAt(0) === '/'){
+          titlee = titlee.slice( 2 );
+      }
+      titlee = titlee.split('/').pop();
+
+      for(var item = 0; item < this.listTitles.length; item++){
+          if(this.listTitles[item].path.replace("/", "" ) === titlee){
+              return this.listTitles[item].title;
+          }
+      }
+      return 'Paula';
+    }
+
+    salir(){
+        localStorage.clear();
+    }
 }

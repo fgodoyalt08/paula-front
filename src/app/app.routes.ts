@@ -8,6 +8,7 @@ import { UneteComponent } from './components/unete/unete.component';
 import { ngfactoryFilePath } from '@angular/compiler/src/aot/util';
 import { PathLocationStrategy } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
+import { PasswordComponent } from './components/password/password.component';
 import { UserLayoutComponent } from './components/user-layout/user-layout.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ComisionComponent } from './components/comision/comision.component';
@@ -21,14 +22,15 @@ import { OrdersComponent } from './components/orders/orders.component';
 
 
 const routes: Routes = [
-    { path: 'registro', component: FormularioComponent },
-    {path:'unete', component:UneteComponent},
-    { path: 'login', component: LoginComponent},
-    {path:'inicio', component:UserLayoutComponent,children:[
+    { path: 'registrarse', component: FormularioComponent },
+    { path: 'unete', component:UneteComponent},
+    { path: 'ingresar', component: LoginComponent},
+    { path: 'olvide-contraseña', component: PasswordComponent},
+    { path:'inicio', component:UserLayoutComponent,children:[
         {path:'perfil', component:PerfilComponent},
         {path:'comision', component:ComisionComponent},
         {path:'pedidos', component:PedidosComponent},
-        {path:'config', component:ConfiguracionComponent},
+        {path:'configuracion', component:ConfiguracionComponent},
         {path:'detalle', component:DetallePedidoComponent},
         {path:'users', component:UsersComponent},
         {path:'products', component:ProductsComponent},

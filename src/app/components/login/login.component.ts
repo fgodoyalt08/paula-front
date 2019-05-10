@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Text } from '@angular/compiler';
 import * as $ from 'jquery';
+import { NotificationService } from '../../_services/toastr-notification.service';  
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,56 +13,69 @@ import * as $ from 'jquery';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient) {}
+  constructor(private actRoute: ActivatedRoute, private http: HttpClient, private _notificationservice:NotificationService, private route: Router) {}
   
-  private oauthUrl = "http://localhost:8000/api/user/ogin";
-    public user:any; public password:any;
+  private oauthUrl = "http://127.0.0.1:8000/api/auth/login";
+    public user:any; 
+    public password:any;
+    public remember:boolean=false;
+
   ngOnInit() {
     document.body.className = "newbg";
   }
 
-  login(user:string, password:string) {
-  
+  login() {
+
   	var headers = new HttpHeaders({
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        "X-Requested-With": "XMLHttpRequest"
     });
 
     let postData = {
-        email: user,
-        password: password
+        email: this.user,
+        password: this.password,
+        remember_me: this.remember
     }
-    return this.http.post(this.oauthUrl, JSON.stringify(postData), {
+    console.warn(postData);
+    return this.http.post(this.oauthUrl, postData, {
         headers: headers
     })
     .subscribe(
       res => {
-        // if(typeof(JSON.parse(res.json()).success.token) == "string"){
-        //   console.warn(JSON.parse(res.json()).success.token)
-        // }else{
-        //   console.warn("no sucedio");
-        // }
+         if(typeof(res['access_token']) == "string"){
+           localStorage.setItem('at', res['access_token']);
+           this.route.navigate(['/inicio/perfil'])
+         }else{
+           this.showErrorNotification("Ops, intentelo nuevamente")
+         }
     },err => {
-      $['notify']({
-          icon: "notifications",
-          message: "<b>Atención! </b> - los datos son incorrectos."
+      if (typeof err.error.message != "undefined")
+        if(err.error.message.includes("users_email_unique")){
+            this.showErrorNotification("El correo ya está registrado")
+        }else if(err.error.message.includes("Unauthorized")){
+            this.showErrorNotification("Los datos son incorrectos")
+        }
 
-      },{
-          type: "orange",
-          timer: 4000,
-          template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
-            '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons">close</i></button>' +
-            '<i class="material-icons" data-notify="icon">notifications</i> ' +
-            '<span data-notify="title">{1}</span> ' +
-            '<span data-notify="message">{2}</span>' +
-            '<div class="progress" data-notify="progressbar">' +
-              '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
-            '</div>' +
-            '<a href="{3}" target="{4}" data-notify="url"></a>' +
-          '</div>'
-      });
+      if(typeof(err.error.errors) != "undefined")
+      if(typeof Object.keys(err.error.errors) == "object"){
+        let msg = '';
+        Object.keys(err.error.errors).forEach( (e, key) => {
+          console.warn(err.error.errors[e])
+          msg += e + " : " + err.error.errors[e] + '<br>';
+        });
+        this.showErrorNotification(msg);
+      }
+      //debugger;
     },
     () => console.log('yay'))
   }
+
+  public showSuccessNotification(msg){  
+    this._notificationservice.success(msg);  
+  }  
+  
+  public showErrorNotification(msg){  
+    this._notificationservice.error(msg);  
+  }  
 
 }
